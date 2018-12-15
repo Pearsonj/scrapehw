@@ -3,32 +3,8 @@ module.exports = function(app) {
   var cheerio = require("cheerio");
   var axios = require("axios");
 
-  app.post("/", function (req, res) {
+app.post("/", function (req, res) {
   
-  axios.get("https://politics.theonion.com/")
-  .then(function(response) {
-
- 
-  var $ = cheerio.load(response.data);
-
-
-  $("a.js_curation-click").each(function(i, element) {
-
-    var title = $(element).text();
-    var link = $(element).attr("href");
-
-  db.Article.create({title: title, link: link}, function (err, submitted) {
-    if (err) {
-      console.log(err)
-    } else {
-      console.log(submitted);
-    }
-  });
-
-  
- 
-  });
-});
 
 axios.get("https://politics.theonion.com/")
   .then(function(response) {
@@ -37,21 +13,19 @@ axios.get("https://politics.theonion.com/")
   var $ = cheerio.load(response.data);
 
 
-  $("h1.headline").each(function(i, element) {
+  $("article.postlist__item").each(function(i, element) {
 
-    var title = $(element).text();
-    var link = $(element).children().attr("href");
+    var title = $(element).children("header").children("h1.headline").text();
+    var link = $(element).children("header").find("a").attr("href");
+    var summary = $(element).children("div.item__content").find("div.excerpt").text()
 
-  db.Article.create({title: title, link: link}, function (err, submitted) {
+  db.Article.create({title: title, link: link, summary: summary}, function (err, submitted) {
     if (err) {
       console.log(err)
     } else {
       console.log(submitted);
     }
   });
-
-  
- 
   });
 });
 });
@@ -61,7 +35,7 @@ app.get("/read", function (req, res) {
     if(err){
       console.log(err)
     } else{
-      res.json(found)
+      res.render("index", {data: found})
     }
   });
 });
