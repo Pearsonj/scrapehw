@@ -1,9 +1,16 @@
 <ul>
 {{#each data}}
-<li data-id="{{this._id}}" class="list-group-item">
+<li value="{{this._id}}" class="list-group-item">
   <h4>{{this.title}}</h4>
   <p>{{this.summary}}</p>
   <a href="{{this.link}}">link to full story</a>
+  <form action="/api/comment" method="POST" id="commentSection">
+      <input type="text" name="user" placeholder="Your Name">
+      <input type="text" name="comment" placeholder="What Do You Have To Say?">
+      <input type="hidden" value={{this._id}} name="postId" id="postId">
+      <input type="submit">
+  </form>
+  
 </li>
 {{/each}}
 </ul>
