@@ -6,18 +6,18 @@ module.exports = function(app) {
 app.get("/", function (req, res) {
   
 
-  axios.get("https://politics.theonion.com/")
+  axios.get("https://www.nytimes.com/section/politics")
     .then(function(response) {
       console.log("cheerio");
   
     var $ = cheerio.load(response.data);
 
     var increment = 0;
-    $("article.postlist__item").each(function(i, element) {
+    $("li.css-ye6x8s").each(function(i, element) {
 
-      var title = $(element).children("header").children("h1.headline").text();
-      var link = $(element).children("header").find("a").attr("href");
-      var summary = $(element).children("div.item__content").find("div.excerpt").text();
+      var title = $(element).children().find("div.css-4jyr1y").children().find("h2").text();
+      var link = $(element).children().find("div.css-4jyr1y").children().attr("href");
+      var summary = $(element).children().find("div.css-4jyr1y").children().find("p").text();
 
 
       db.Article.create({title: title, link: link, summary: summary}, function (err, submitted) {
@@ -26,8 +26,8 @@ app.get("/", function (req, res) {
         } else {
           // console.log(submitted);
         }
-        console.log(increment, $("article.postlist__item").length);
-        if(increment >= $("article.postlist__item").length - 1){
+        console.log(increment, $("li.css-ye6x8s").length);
+        if(increment >= $("li.css-ye6x8s").length - 1){
           renderIndex(req, res);
         } else {
           increment++;
@@ -52,7 +52,7 @@ app.post("/api/comment", function(req, res) {
   db.comment.create(req.body).then(function(dbcomment){
     var postData = req.body;
     console.log(postData);
-    return db.Article.findOneAndUpdate({_id: postData.postId}, {$push: {user: dbcomment.user, comment: dbcomment.comment }}, {new: true}, function(dbResult){
+    return db.Article.findOneAndUpdate({_id: postData.postId}, {$push: {comment: dbcomment._id}}, {new: true}, function(dbResult){
       renderIndex(req, res);
     });
   })
