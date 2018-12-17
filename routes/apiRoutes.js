@@ -18,9 +18,10 @@ app.get("/", function (req, res) {
       var title = $(element).children().find("div.css-4jyr1y").children().find("h2").text();
       var link = $(element).children().find("div.css-4jyr1y").children().attr("href");
       var summary = $(element).children().find("div.css-4jyr1y").children().find("p").text();
+      var pic = $(element).children().find("div.css-4jyr1y").children().children().find("figure").find("div.css-79elbk").find("img").attr("src")
 
 
-      db.Article.create({title: title, link: link, summary: summary}, function (err, submitted) {
+      db.Article.create({title: title, link: link, summary: summary, pic: pic}, function (err, submitted) {
         if (err) {
           // console.log(err)
         } else {
