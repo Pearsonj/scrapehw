@@ -3,8 +3,17 @@ module.exports = function(app) {
   var cheerio = require("cheerio");
   var axios = require("axios");
 
+  function renderIndex (req, res) {
+    db.Article.find({}).populate("comment").then(function(found) {
+      console.log(found);
+        res.render("index", {data: found})
+    }).catch(function(err){
+      console.log(err);
+    }
+    )
+  };
+
 app.get("/", function (req, res) {
-  
 
   axios.get("https://www.nytimes.com/section/politics")
     .then(function(response) {
@@ -38,25 +47,15 @@ app.get("/", function (req, res) {
   });
 });
 
-function renderIndex (req, res) {
-
-  db.Article.find({}).populate("comment").then(function(found) {
-    console.log(found);
-      res.render("index", {data: found})
-  }).catch(function(err){
-    console.log(err);
-  }
-  )
-};
-
 app.post("/comment", function(req, res) {
   db.comment.create(req.body).then(function(dbcomment){
     var postData = req.body;
     console.log(postData);
-    return db.Article.findOneAndUpdate({_id: postData.postId}, {$push: {comment: dbcomment._id}}, {new: true}, function(dbResult){
-      renderIndex(req, res);
-    });
-  })
-})
-
+    return db.Article.findOneAndUpdate({_id: postData.postId}, {$push: {comment: dbcomment._id}}, {new: true});
+  }).then(function(dbArticle) {
+    renderIndex(req, res);
+  }).catch(function(err) {
+    res.json(err);
+  });
+});
 };
