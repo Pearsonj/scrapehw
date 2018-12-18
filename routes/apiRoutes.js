@@ -41,7 +41,6 @@ app.get("/", function (req, res) {
 function renderIndex (req, res) {
 
   db.Article.find({}).populate("comment").then(function(found) {
-      console.log(found);
       res.render("index", {data: found})
   }).catch(function(err){
     console.log(err);
@@ -49,7 +48,7 @@ function renderIndex (req, res) {
   )
 };
 
-app.post("/api/comment", function(req, res) {
+app.post("/comment", function(req, res) {
   db.comment.create(req.body).then(function(dbcomment){
     var postData = req.body;
     console.log(postData);

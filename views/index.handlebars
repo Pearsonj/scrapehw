@@ -1,3 +1,6 @@
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/styles.css" media="screen" title="no title" charset="utf-8">
+
 <ul>
 {{#each data}}
 <li value="{{this._id}}" class="list-group-item">
@@ -5,7 +8,7 @@
   <h4>{{this.title}}</h4>
   <p>{{this.summary}}</p>
   <a href="https://www.nytimes.com{{this.link}}">link to full story</a>
-  <form action="/api/comment" method="POST" id="commentSection">
+  <form action="/comment" method="POST" id="commentSection">
       <input type="text" name="user" placeholder="Your Name">
       <input type="text" name="comment" placeholder="What Do You Have To Say?">
       <input type="hidden" value={{this._id}} name="postId" id="postId">
