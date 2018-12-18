@@ -14,7 +14,14 @@
       <input type="hidden" value={{this._id}} name="postId" id="postId">
       <input type="submit">
   </form>
-  
+  <ul>
+    {{#each comment}}
+    <li>
+    <span>{{this.user}}</span>
+    <span>{{this.comment}}</span>
+    </li>
+    {{/each}}
+  </ul>
 </li>
 {{/each}}
 </ul>
