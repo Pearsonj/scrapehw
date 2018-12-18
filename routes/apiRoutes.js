@@ -41,6 +41,7 @@ app.get("/", function (req, res) {
 function renderIndex (req, res) {
 
   db.Article.find({}).populate("comment").then(function(found) {
+    console.log(found);
       res.render("index", {data: found})
   }).catch(function(err){
     console.log(err);

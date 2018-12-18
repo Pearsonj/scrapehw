@@ -27,10 +27,10 @@ var ArticleSchema = new Schema({
     required: true,
     unique: true
   },
-  comment: {
+  comment: [{
     type: Schema.Types.ObjectId,
     ref: "comment"
-  }
+  }]
 });
 
 
