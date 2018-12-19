@@ -3,6 +3,54 @@
   position: relative;
   left: -1%;
 }
+
+html, body{
+  background-image: url("./folk-pattern-black.png")
+}
+
+.header{
+  text-align: center;
+    font-family: 'Charm', cursive;
+    text-decoration: underline;
+    font-size: 58px;
+    /* margin-left: 97px; */
+    position: relative;
+    color: #a94343;
+    text-shadow: 0px 0px 5px white;
+    left: 2%;
+    margin-bottom: 37px;
+}
+
+
+.storyTitle{
+  text-decoration: underline;
+  font-family: 'Charm', cursive;
+  font-weight: 900;
+  margin-top: 15px;
+}
+
+.storySum{
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  line-height: 1.9;
+}
+
+.storyLink{
+  margin: 0;
+  padding: 0;
+  color: black;
+  position: relative;
+  bottom: 12px;
+  text-decoration: overline;
+}
+
+.storyLink:hover{
+  text-decoration: overline;
+  color: red;
+}
+
+
 .articleLi{
   width: 900px;
   height: 400px;
@@ -27,6 +75,13 @@
     position: relative;
     left: 5%;
     word-wrap: break-word;
+}
+
+.delete{
+  color: red;
+    float: right;
+    margin-right: 2%;
+
 }
 
 .list-group-item{
