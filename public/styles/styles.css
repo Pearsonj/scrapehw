@@ -60,6 +60,8 @@ html, body{
   left: 21%;
   margin-bottom: 1%;
 }
+
+
 .commentInput{
   width: 425px;
 }
@@ -78,10 +80,24 @@ html, body{
 }
 
 .delete{
-  color: red;
+    color: red !important;
     float: right;
     margin-right: 2%;
+    cursor: pointer;
 
+}
+
+input{
+  font-family: 'Charm', cursive;
+  
+}
+
+.submitBtn{
+  background-color: white;
+  font-family: 'Charm', cursive;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .list-group-item{

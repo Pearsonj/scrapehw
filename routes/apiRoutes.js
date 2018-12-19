@@ -55,7 +55,8 @@ app.post("/api/comment", function(req, res) {
   }).then(function(dbArticle) {
     res.redirect("/");
   }).catch(function(err) {
-    res.json(err);
+    console.log(err);
+    res.redirect("/404");
   });
 });
 
@@ -67,6 +68,10 @@ app.post("/api/delete", function(req, res){
         renderIndex(req, res);
       }
   })
+})
+
+app.get("/404", function(req, res){
+  res.render("404");
 })
 
 };

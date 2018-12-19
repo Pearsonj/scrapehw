@@ -2,9 +2,9 @@
   <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
   <link rel="stylesheet" href="styles/styles.css" media="screen" title="no title" charset="utf-8">
 
-<ul>
+<ul class="articlsUl list-group-prepend">
 {{#each data}}
-<li value="{{this._id}}" class="list-group-item articleLi">
+<li value="{{this._id}}"  class="list-group-item articleLi">
   <img src="{{this.pic}}" alt="Photo" class="storyPic">
   <h4 class="storyTitle">{{this.title}}</h4>
   <p class="storySum">{{this.summary}}</p>
@@ -13,7 +13,7 @@
       <input type="text" name="user" placeholder="Your Name">
       <input type="text" name="comment" class="commentInput" placeholder="What Do You Have To Say?">
       <input type="hidden" value={{this._id}} name="postId" class="postId">
-      <input type="submit">
+      <input type="submit" class="submitBtn">
   </form>
   <ul class="commentUl">
     {{#each comment}}
