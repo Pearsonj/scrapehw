@@ -47,15 +47,26 @@ app.get("/", function (req, res) {
   });
 });
 
-app.post("/comment", function(req, res) {
+app.post("/api/comment", function(req, res) {
   db.comment.create(req.body).then(function(dbcomment){
     var postData = req.body;
     console.log(postData);
     return db.Article.findOneAndUpdate({_id: postData.postId}, {$push: {comment: dbcomment._id}}, {new: true});
   }).then(function(dbArticle) {
-    renderIndex(req, res);
+    res.redirect("/");
   }).catch(function(err) {
     res.json(err);
   });
 });
+
+app.post("/api/delete", function(req, res){
+  db.comment.findOneAndRemove({_id: req.body.commentId}).then(function(err, deleted){
+      if(err) {
+        console.log(err);
+      }else{
+        renderIndex(req, res);
+      }
+  })
+})
+
 };
