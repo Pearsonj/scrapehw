@@ -3,5 +3,66 @@
   position: relative;
   left: -1%;
 }
+.articleLi{
+  width: 900px;
+  height: 400px;
+  /* scroll-behavior: auto; */
+  overflow-y: scroll;
+  position: relative;
+  left: 21%;
+  margin-bottom: 1%;
+}
+.commentInput{
+  width: 425px;
+}
+
+.commentLi{
+  list-style-type: none;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    width: 85%;
+    text-align: left;
+    margin-bottom: 5px;
+    position: relative;
+    left: 5%;
+    word-wrap: break-word;
+}
+
+.list-group-item{
+  text-align:center;
+}
+
+.commentSection{
+  position: relative;
+  left: 0%;
+}
+hr{
+  padding: 0;
+  margin: 0;
+  background-color: brown;
+}
+.commentName{
+  font-size: 18px;
+  font-weight: 800;
+  position: relative;
+  left: 1%;
+  /* text-decoration: underline; */
+  font-family: unset;
+}
+
+.commentTxt{
+  bottom: 4px;
+  font-size: 18px;
+  margin-left: 3px;
+  
+}
+
+.commentUl{
+  margin-top: 5px;
+}
+
+
+
 
 

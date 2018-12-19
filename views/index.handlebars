@@ -3,23 +3,20 @@
 
 <ul>
 {{#each data}}
-<li value="{{this._id}}" class="list-group-item">
+<li value="{{this._id}}" class="list-group-item articleLi">
   <img src="{{this.pic}}" alt="Photo">
   <h4>{{this.title}}</h4>
   <p>{{this.summary}}</p>
   <a href="https://www.nytimes.com{{this.link}}">link to full story</a>
   <form action="/comment" method="POST" class="commentSection">
       <input type="text" name="user" placeholder="Your Name">
-      <input type="text" name="comment" placeholder="What Do You Have To Say?">
+      <input type="text" name="comment" class="commentInput" placeholder="What Do You Have To Say?">
       <input type="hidden" value={{this._id}} name="postId" class="postId">
       <input type="submit">
   </form>
-  <ul>
+  <ul class="commentUl">
     {{#each comment}}
-    <li>
-    <span>{{this.user}}</span><br>
-    <span>{{this.comment}}</span>
-    </li>
+     {{> comment-block}}
     {{/each}}
   </ul>
 </li>
