@@ -6,7 +6,8 @@
 
 html,
 body {
-  background-image: url("./folk-pattern-black.png")
+  background-image: url("./folk-pattern-black.png");
+  overflow-x: hidden;
 }
 
 .header {
