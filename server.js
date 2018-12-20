@@ -17,7 +17,7 @@ app.use(express.json());
 
 app.use(express.static("./public"));
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = "mongodb://heroku_60q6zzqr:f1m2mpeuri97mc4t98i31lqc41@ds039000.mlab.com:39000/heroku_60q6zzqr" || "mongodb://localhost/mongoHeadlines";
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
@@ -32,6 +32,6 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-app.listen(3000, function () {
-  console.log("App running on port 3000!");
+app.listen(3001, function () {
+  console.log("App running on port 3001!");
 });
