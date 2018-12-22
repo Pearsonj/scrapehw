@@ -6,7 +6,7 @@ var mongoose = require("mongoose");
 
 var app = express();
 
-var $PORT = 3001;
+var PORT = 3000;
 
 app.use(logger("dev"));
 
@@ -32,6 +32,6 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-app.listen($PORT, function () {
+app.listen(PORT, function () {
   console.log("App running on port 3001!");
 });
