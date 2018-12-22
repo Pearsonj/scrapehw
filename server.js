@@ -3,10 +3,10 @@ var logger = require("morgan");
 var exphbs = require("express-handlebars");
 var mongoose = require("mongoose");
 
-var db = require("./models")
 
 var app = express();
 
+var $PORT = 3001;
 
 app.use(logger("dev"));
 
@@ -32,6 +32,6 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-app.listen(3001, function () {
+app.listen($PORT, function () {
   console.log("App running on port 3001!");
 });
